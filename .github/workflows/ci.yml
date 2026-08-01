@@ -57,6 +57,9 @@ jobs:
    
   backend-build:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: lms-backend
     needs: backend-test
     steps:
       - name: Checkout code
@@ -72,6 +75,9 @@ jobs:
         run: docker push ${{ secrets.DOCKERHUB_USERNAME }}/backend_lms:latest   
   frontend-build:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: lms-frontend
     needs: frontend-test
     steps:
       - name: Checkout code
